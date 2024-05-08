@@ -72,10 +72,19 @@ def get_node_properties(node_dict_to_log: dict,
     # Create protobuf for the node's output shapes
     if output_shapes is not None:
         tshape_protos = []
+        is_tf_combined_non_max_suppression = len(output_shapes) == 1 and 'function' in node_dict_to_log and node_dict_to_log['function'] == 'image.combined_non_max_suppression'
+
+        if is_tf_combined_non_max_suppression:
+            combined_nms_output = output_shapes[0]
+            output_shapes = [combined_nms_output.nmsed_boxes,
+                             combined_nms_output.nmsed_scores,
+                             combined_nms_output.nmsed_classes,
+                             combined_nms_output.valid_detections]
+
         for output_shape in output_shapes:  # create protobuf for each output shape
             proto_dims_list = []
             for dim in output_shape:
-                proto_dims_list.append(TensorShapeProto.Dim(size=dim))
+                proto_dims_list.append(TensorShapeProto.Dim(size=dim)) # dim shold ne an integer
             tshape_proto = TensorShapeProto(dim=proto_dims_list)
             tshape_protos.append(tshape_proto)
         node_properties['_output_shapes'] = AttrValue(list=AttrValue.ListValue(shape=tshape_protos))
