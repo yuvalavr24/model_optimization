@@ -1,50 +1,86 @@
+<div align="center" markdown="1">
+
 # Model Compression Toolkit (MCT)
 
-Model Compression Toolkit (MCT) is an open-source project for neural network model optimization under efficient, constrained hardware.
+**Quantize and compress production-ready deep learning vision models for efficient edge deployment.**
 
-This project provides researchers, developers, and engineers tools for optimizing and deploying state-of-the-art neural networks on efficient hardware.
+#### Version 2.2.1 is out! Notebooks have been updated!
+______________________________________________________________________
 
-Specifically, this project aims to apply quantization to compress neural networks.
+</div>  
+<div align="center">
+<p align="center">
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#high-level-features-and-techniques">High level features and techniques</a> •
+  <a href="#resources">Resources</a> • 
+ <a href="#community">Community</a> •
+  <a href="#license">License</a> •
+</p>
+<p align="center">
+  <a href="https://sony.github.io/model_optimization#prerequisites"><img src="https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue" /></a>
+  <a href="https://sony.github.io/model_optimization#prerequisites"><img src="https://img.shields.io/badge/pytorch-1.9%20%7C%201.10-blue" /></a>
+  <a href="https://pypi.org/project/super-gradients/"><img src="https://img.shields.io/pypi/v/super-gradients" /></a>
+  <a href="https://github.com/Deci-AI/super-gradients/blob/master/documentation/source/model_zoo.md" ><img src="https://img.shields.io/badge/pre--trained%20models-34-brightgreen" /></a>
+  <a href="https://github.com/Deci-AI/super-gradients/releases"><img src="https://img.shields.io/github/v/release/Deci-AI/super-gradients" /></a>
+  <a href="https://join.slack.com/t/supergradients-comm52/shared_invite/zt-10vz6o1ia-b_0W5jEPEnuHXm087K~t8Q"><img src="https://img.shields.io/badge/slack-community-blueviolet" /></a>
+  <a href="https://github.com/Deci-AI/super-gradients/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-blue" /></a>
+  <a href="https://docs.deci.ai/super-gradients/documentation/source/welcome.html"><img src="https://img.shields.io/badge/docs-mkdocs-brightgreen" /></a>
+</p>    
+</div>
+
+__________________________________________________________________________________________________________
+
+
+## Quantize with MCT
+__________________________________________________________________________________________________________
+
+Open-source project for neural network model optimization, providing researchers, developers, and engineers with advanced quantization and compression tools for deploying state-of-the-art neural networks on efficient, constrained hardware.
+
+### Support various computer vision tasks
+
+IMAGE 1 IMAGE 2 IMAGE 3 IMAGE 4
 
 <img src="https://github.com/sony/model_optimization/raw/main/docsrc/images/mct_block_diagram.svg" width="10000">
 
 MCT is developed by researchers and engineers working at Sony Semiconductor Israel.
 
-
-
-## Table of Contents
-
-- [Getting Started](https://github.com/sony/model_optimization?tab=readme-ov-file#getting-started)
-- [Supported features](https://github.com/sony/model_optimization?tab=readme-ov-file#supported-features)
-- [Results](https://github.com/sony/model_optimization?tab=readme-ov-file#results)
-- [Troubleshooting](https://github.com/sony/model_optimization?tab=readme-ov-file#trouble-shooting)
-- [Contributions](https://github.com/sony/model_optimization?tab=readme-ov-file#contributions)
-- [License](https://github.com/sony/model_optimization?tab=readme-ov-file#license)
-
-
 ## Getting Started
-
-This section provides an installation and a quick starting guide.
-
-### Installation
-
-To install the latest stable release of MCT, run the following command:
+### QuickInstallation
+Pip install the model compression toolkit package in a Python>=3.9 environment with PyTorch>=2.1 or Tensorflow>=2.12.
 ```
 pip install model-compression-toolkit
 ```
-
 For installing the nightly version or installing from source, refer to the [installation guide](https://github.com/sony/model_optimization/blob/main/INSTALLATION.md).
 
+In order to use MCT, you’ll need to provide a floating point .pt or .keras model as an input.
 
-### Quick start & tutorials 
+### Supported Quantization flows
+Quantization Method  | Complexity | Computational Cost | Tutorial
+-------------------- | -----------|--------------------|---------
+PTQ (Post Training Quantization)  | Low | Low (~1-10 CPU minutes) | Tutorial
+GPTQ (parameters fine-tuning using gradients)  | Mild | Mild (~2-3 GPU hours) | Tutorial
+QAT (Quantization Aware Training)  | High | High (~12-36 GPU hours) | Tutorial
 
-Explore the Model Compression Toolkit (MCT) through our tutorials, 
-covering compression techniques for Keras and PyTorch models. Access interactive [notebooks](https://github.com/sony/model_optimization/blob/main/tutorials/README.md) 
-for hands-on learning. For example:
+
+### Tutorials and Examples 
+
+Our [tutorials](https://github.com/sony/model_optimization/blob/main/tutorials/README.md) section will walk you through the basics of deploying your first model; Covering various compression techniques for both Keras and PyTorch models. 
+Access interactive notebooks for hands-on learning with popular models/tasks, for example:
+
+<details id="keras-ptq">
+  <summary>Keras</summary>
+ * [MobileNetV2 PTQ](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
+ * [MobileNetV2 PTQ with Mixed-Precision](keras/example_keras_mobilenet_mixed_precision.ipynb) 
+ * [MobileNetV2 GPTQ](keras/example_keras_mobilenet_gptq.ipynb)
+ * [Exporter Usage](keras/example_keras_export.ipynb)
+ * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb) [Segmentation Quick Start](https://github.com/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb)
+</details>
+
 * [Keras MobileNetV2 post training quantization](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
 * [Post training quantization with PyTorch](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/mct_features_notebooks/pytorch/example_pytorch_post_training_quantization.ipynb)
 * [Data Generation for ResNet18 with PyTorch](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/mct_features_notebooks/pytorch/example_pytorch_data_generation.ipynb).
 
+See [tutorials](https://github.com/sony/model_optimization/blob/main/tutorials/README.md) for more examples or move on to Resources section.
 
 ### Supported Versions
 
