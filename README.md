@@ -3,7 +3,6 @@
 # Model Compression Toolkit (MCT)
 
 **Quantize and compress production-ready deep learning vision models for efficient edge deployment.**
-
 #### Version 2.2.1 is out! Notebooks have been updated!
 ______________________________________________________________________
 
@@ -37,15 +36,17 @@ ________________________________________________________________________________
 Open-source project for neural network model optimization, providing researchers, developers, and engineers with advanced quantization and compression tools for deploying state-of-the-art neural networks on efficient, constrained hardware.
 
 ### Support various computer vision tasks
+<img src="/docsrc/images/Classification.png" width="400">
 
-IMAGE 1 IMAGE 2 IMAGE 3 IMAGE 4
 
-<img src="https://github.com/sony/model_optimization/raw/main/docsrc/images/mct_block_diagram.svg" width="10000">
+<p align="center">
+<img src="/docsrc/images/SemSeg.png" width="400">
+<img src="/docsrc/images/PoseEst.png" width="400">
+<img src="/docsrc/images/ObjDet.png" width="400">
 
-MCT is developed by researchers and engineers working at Sony Semiconductor Israel.
 
 ## Getting Started
-### QuickInstallation
+### Quick Installation
 Pip install the model compression toolkit package in a Python>=3.9 environment with PyTorch>=2.1 or Tensorflow>=2.12.
 ```
 pip install model-compression-toolkit
@@ -61,6 +62,7 @@ PTQ (Post Training Quantization)  | Low | Low (~1-10 CPU minutes) | Tutorial
 GPTQ (parameters fine-tuning using gradients)  | Mild | Mild (~2-3 GPU hours) | Tutorial
 QAT (Quantization Aware Training)  | High | High (~12-36 GPU hours) | Tutorial
 
+<img src="/docsrc/images/mctFlow.png" width="1000">
 
 ### Tutorials and Examples 
 
@@ -69,11 +71,12 @@ Access interactive notebooks for hands-on learning with popular models/tasks, fo
 
 <details id="keras-ptq">
   <summary>Keras</summary>
- * [MobileNetV2 PTQ](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
+ * [(https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Deci-AI/super-gradients/blob/master/notebooks/transfer_learning_classification.ipynb) [Transfer Learning for classification](https://github.com/Deci-AI/super-gradients/blob/master/notebooks/transfer_learning_classification.ipynb) 
+* <img src="/docsrc/images/colab-badge.png"> [MobileNetV2 PTQ](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
  * [MobileNetV2 PTQ with Mixed-Precision](keras/example_keras_mobilenet_mixed_precision.ipynb) 
- * [MobileNetV2 GPTQ](keras/example_keras_mobilenet_gptq.ipynb)
+ * image:(https://colab.research.google.com/assets/colab-badge.svg) [MobileNetV2 GPTQ](keras/example_keras_mobilenet_gptq.ipynb)
  * [Exporter Usage](keras/example_keras_export.ipynb)
- * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb) [Segmentation Quick Start](https://github.com/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb)
+ * (https://colab.research.google.com/assets/colab-badge.svg)(https://colab.research.google.com/github/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb) [Segmentation Quick Start](https://github.com/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb)
 </details>
 
 * [Keras MobileNetV2 post training quantization](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
