@@ -21,10 +21,9 @@ ______________________________________________________________________
   <a href="https://pypi.org/project/super-gradients/"><img src="https://img.shields.io/pypi/v/super-gradients" /></a>
   <a href="https://github.com/Deci-AI/super-gradients/blob/master/documentation/source/model_zoo.md" ><img src="https://img.shields.io/badge/pre--trained%20models-34-brightgreen" /></a>
   <a href="https://github.com/Deci-AI/super-gradients/releases"><img src="https://img.shields.io/github/v/release/Deci-AI/super-gradients" /></a>
-  <a href="https://join.slack.com/t/supergradients-comm52/shared_invite/zt-10vz6o1ia-b_0W5jEPEnuHXm087K~t8Q"><img src="https://img.shields.io/badge/slack-community-blueviolet" /></a>
+  <a href="https://github.com/sony/model_optimization/discussions"><img src="https://img.shields.io/badge/discussions-blue" /></a>
   <a href="https://github.com/Deci-AI/super-gradients/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-blue" /></a>
-  <a href="https://docs.deci.ai/super-gradients/documentation/source/welcome.html"><img src="https://img.shields.io/badge/docs-mkdocs-brightgreen" /></a>
-</p>    
+ </p>    
 </div>
 
 __________________________________________________________________________________________________________
@@ -37,15 +36,10 @@ Open-source project for neural network model optimization, providing researchers
 
 ### Support various computer vision tasks
 <p align="center">
-<img src="/docsrc/images/Classification.png" width="250">
-<img src="/docsrc/images/SemSeg.png" width="250">
-<img src="/docsrc/images/PoseEst.png" width="250">
-<img src="/docsrc/images/ObjDet.png" width="250">
-
-<a href="https://colab.research.google.com/github/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb"><img src="/docsrc/images/colab-badge.svg" /></a>[MobileNetV2 PTQ](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
-
-<a href="NOTEBOOK UR""><imag src="/docsrc/images/colab-badge.svg>
-
+<img src="/docsrc/images/Classification.png" width="200">
+<img src="/docsrc/images/SemSeg.png" width="200">
+<img src="/docsrc/images/PoseEst.png" width="200">
+<img src="/docsrc/images/ObjDet.png" width="200">
 
 
 ## Getting Started
@@ -58,14 +52,29 @@ For installing the nightly version or installing from source, refer to the [inst
 
 In order to use MCT, you’ll need to provide a floating point .pt or .keras model as an input.
 
-### Supported Quantization flows
+### Supported Quantization flows</div>  
+MCT supports various quantization flows as appears below. 
+<div align="center">
+<p align="center">
+
 Quantization Method  | Complexity | Computational Cost | Tutorial
 -------------------- | -----------|--------------------|---------
 PTQ (Post Training Quantization)  | Low | Low (~1-10 CPU minutes) | Tutorial
 GPTQ (parameters fine-tuning using gradients)  | Mild | Mild (~2-3 GPU hours) | Tutorial
 QAT (Quantization Aware Training)  | High | High (~12-36 GPU hours) | Tutorial
+</p>    
+</div>
 
-<img src="/docsrc/images/mctFlow.png" width="1000">
+For each flow, **Quantization core** utilizes various algorithms and hyper-parameters for optimal [hardware-aware](https://github.com/sony/model_optimization/blob/main/model_compression_toolkit/target_platform_capabilities/README.md) quantization results. 
+For further details, please see [Supported features and algorithms](#supported-features). User can either provide their own representative dataset, or utilize the [Data Generation](#data-generation-) capability.
+
+<div align="center">
+<p align="center">
+
+<img src="/docsrc/images/mctFlow.png" width="800">
+</p>    
+</div>
+
 
 ### Tutorials and Examples 
 
@@ -74,19 +83,16 @@ Access interactive notebooks for hands-on learning with popular models/tasks, fo
 
 <details id="keras-ptq">
   <summary>Keras</summary>
- * [(https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Deci-AI/super-gradients/blob/master/notebooks/transfer_learning_classification.ipynb) [Transfer Learning for classification](https://github.com/Deci-AI/super-gradients/blob/master/notebooks/transfer_learning_classification.ipynb) 
-* <img src="/docsrc/images/colab-badge.png"> [MobileNetV2 PTQ](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
- * [MobileNetV2 PTQ with Mixed-Precision](keras/example_keras_mobilenet_mixed_precision.ipynb) 
- * image:(https://colab.research.google.com/assets/colab-badge.svg) [MobileNetV2 GPTQ](keras/example_keras_mobilenet_gptq.ipynb)
- * [Exporter Usage](keras/example_keras_export.ipynb)
- * (https://colab.research.google.com/assets/colab-badge.svg)(https://colab.research.google.com/github/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb) [Segmentation Quick Start](https://github.com/Deci-AI/super-gradients/blob/master/notebooks/quickstart_segmentation.ipynb)
+[![Open In Colab](https://colab.research.google.com/github/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb) [MobileNetV2](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb) 
+  
+  <a 
+  href="https://colab.research.google.com/github/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb"><img src="/docsrc/images/colab-badge.svg" /></a>   [MobileNetV2 PTQ](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
+
 </details>
 
-* [Keras MobileNetV2 post training quantization](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
-* [Post training quantization with PyTorch](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/mct_features_notebooks/pytorch/example_pytorch_post_training_quantization.ipynb)
-* [Data Generation for ResNet18 with PyTorch](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/mct_features_notebooks/pytorch/example_pytorch_data_generation.ipynb).
 
 See [tutorials](https://github.com/sony/model_optimization/blob/main/tutorials/README.md) for more examples or move on to Resources section.
+  <a href="NOTEBOOK UR""><imag src="/docsrc/images/colab-badge.svg>
 
 ### Supported Versions
 
