@@ -36,13 +36,16 @@ ________________________________________________________________________________
 Open-source project for neural network model optimization, providing researchers, developers, and engineers with advanced quantization and compression tools for deploying state-of-the-art neural networks on efficient, constrained hardware.
 
 ### Support various computer vision tasks
-<img src="/docsrc/images/Classification.png" width="400">
-
-
 <p align="center">
-<img src="/docsrc/images/SemSeg.png" width="400">
-<img src="/docsrc/images/PoseEst.png" width="400">
-<img src="/docsrc/images/ObjDet.png" width="400">
+<img src="/docsrc/images/Classification.png" width="250">
+<img src="/docsrc/images/SemSeg.png" width="250">
+<img src="/docsrc/images/PoseEst.png" width="250">
+<img src="/docsrc/images/ObjDet.png" width="250">
+
+<a href="https://colab.research.google.com/github/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb"><img src="/docsrc/images/colab-badge.svg" /></a>[MobileNetV2 PTQ](https://github.com/sony/model_optimization/blob/main/tutorials/notebooks/imx500_notebooks/keras/example_keras_mobilenetv2_for_imx500.ipynb)
+
+<a href="NOTEBOOK UR""><imag src="/docsrc/images/colab-badge.svg>
+
 
 
 ## Getting Started
